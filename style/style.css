@@ -102,6 +102,7 @@ header.sectionHeader {
   display: block;
 }
 .mainSection .sectionContent div div #menuList {
+  min-width: 10rem;
   list-style: none;
   display: block;
   padding: 0;

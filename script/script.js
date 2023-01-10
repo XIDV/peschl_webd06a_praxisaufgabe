@@ -1,6 +1,10 @@
+'use strict';
+
 $(() => {
     console.log('Document ready for action ...');
 
+
+    //  Zu Teilaufgabe A - Ein- u. Ausgabe von Formularwerte
     setNameOut();
 
     $('#name').on('keyup', e => {
@@ -17,6 +21,30 @@ $(() => {
         setNameOut($('#name').val());
     });
 
+
+    //  Zu Teilaufgabe B - Inhalte dynamisch ein- u. ausblenden
+    const contentData = {
+        $content: undefined,
+
+        setContent: function(content) {
+            this.content = content
+        },
+        getContent: function(selection) {
+            return this.content[selection];
+        }
+    }
+
+    $.getJSON('../script/content.json')
+    .done((data) => {
+        contentData.setContent(data);
+    })
+    .fail((jqXHR, errorMessage, error) => {
+        console.error(errorMessage);
+    });
+
+    $('#menuList').children().on('click', e => {
+        $('#descriptionOut').text(contentData.getContent($(e.target).data().content));
+    })
 });
 
 
