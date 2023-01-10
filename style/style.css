@@ -47,6 +47,9 @@ header.sectionHeader {
 .mainSection {
   margin: 4rem 0;
 }
+.mainSection .sectionContent h3 {
+  color: #EDA526;
+}
 .mainSection .sectionContent fieldset {
   border-color: #EDA526;
   border-radius: 0.5rem;
@@ -123,4 +126,7 @@ header.sectionHeader {
 }
 .mainSection .sectionContent div div #menuList li:hover i {
   transform: translateX(1em);
+}
+.mainSection .sectionContent div div #menuList .active {
+  color: #EDA526;
 }/*# sourceMappingURL=style.css.map */

@@ -23,31 +23,46 @@ $(() => {
 
 
     //  Zu Teilaufgabe B - Inhalte dynamisch ein- u. ausblenden
-    const contentData = {
-        $content: undefined,
-
-        setContent: function(content) {
-            this.content = content
-        },
-        getContent: function(selection) {
-            return this.content[selection];
-        }
-    }
-
     $.getJSON('../script/content.json')
     .done((data) => {
         contentData.setContent(data);
+        showContent();
     })
     .fail((jqXHR, errorMessage, error) => {
         console.error(errorMessage);
     });
 
-    $('#menuList').children().on('click', e => {
-        $('#descriptionOut').text(contentData.getContent($(e.target).data().content));
-    })
+    $('#descriptionOut').hide();
+    $('#menuList').children().on('click', showContent);
 });
 
 
 function setNameOut(name) {
     name ? $('#nameOut').text(name) : $('#nameOut').text($('#name').attr('placeholder'));
+}
+
+const contentData = {
+    $content: undefined,
+
+    setContent: function(content) {
+        this.content = content
+    },
+    getContent: function(selection = 'css') {
+        return this.content[selection];
+    }
+}
+
+function showContent(e) {
+    $('#descriptionOut').fadeOut(
+        () => {
+            e ? $('#descriptionOut').text(contentData.getContent($(e.target).data().content)) : $('#descriptionOut').text(contentData.getContent());
+            $('#descriptionOut').slideDown();
+        }
+    );
+    if(e) { toggleActiveLink(e.target) }
+}
+
+function toggleActiveLink(target) {
+    $('#menuList').children().removeClass('active');
+    $(target).addClass('active');
 }
