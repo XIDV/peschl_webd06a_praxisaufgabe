@@ -33,6 +33,7 @@ body #pageWrapper {
 header h1, header h2 {
   color: #EDA526;
   font-weight: 300;
+  margin: 0.25em 0;
 }
 header p {
   font-size: 0.8rem;
@@ -82,7 +83,8 @@ header.sectionHeader {
   padding: 0.5em;
   border: none;
   border-radius: 0.3333333333rem;
-  transition: all 300ms ease-in-out;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
 }
 .mainSection .sectionContent fieldset button:hover {
   color: #DBD9E6;
@@ -91,4 +93,33 @@ header.sectionHeader {
 .mainSection .sectionContent #nameOut {
   color: #EDA526;
   font-weight: 700;
+}
+.mainSection .sectionContent div {
+  display: flex;
+  gap: 1rem;
+}
+.mainSection .sectionContent div div {
+  display: block;
+}
+.mainSection .sectionContent div div #menuList {
+  list-style: none;
+  display: block;
+  padding: 0;
+}
+.mainSection .sectionContent div div #menuList li {
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
+.mainSection .sectionContent div div #menuList li i {
+  display: inline-block;
+  transition: all 250ms ease-in-out;
+}
+.mainSection .sectionContent div div #menuList li:hover {
+  color: #EDA526;
+}
+.mainSection .sectionContent div div #menuList li:hover i {
+  transform: translateX(1em);
 }/*# sourceMappingURL=style.css.map */
