@@ -1,10 +1,63 @@
 @use 'preset'
 @import 'colors'
+@import 'var'
 
 body
-    font-family: 'Open Sans', sans-serif
-    background-color: $grayblue
-
-h1
-    font-weight: 300
     color: $graybluelight
+    background-color: $grayblue
+    font-family: 'Open Sans', sans-serif
+    #pageWrapper
+        max-width: 30rem
+        margin: 0 auto
+
+header
+    h1, h2
+        color: $strongorange
+        font-weight: 300
+    p
+        font-size: $smallFont
+        font-style: italic
+        margin: 0
+    &.sectionHeader
+        margin: 0 0 1rem 0
+
+.mainSection
+    margin: 4rem 0
+    .sectionContent
+        fieldset
+            border-color: $strongorange
+            border-radius: $borderRadius
+            box-shadow: .025rem .025rem .5rem $graybluelight
+            legend
+                color: $strongorange
+                font-size: 1.75rem
+                font-weight: 700
+            div
+                display: flex
+                flex-direction: column
+                gap: 1rem
+                margin: 0 0 1rem 0
+                *
+                    font-size: $formFontSize
+                input
+                    color: $grayblue
+                    background-color: $graybluelight
+                    padding: .5em
+                    border-radius: calc( $borderRadius / 1.5 )
+                    &:disabled
+                        background-color: $graybluemedium
+            button
+                color: $strongorange
+                background-color: $graybluelight
+                font-size: $formFontSize
+                font-weight: 700
+                padding: .5em
+                border: none
+                border-radius: calc( $borderRadius / 1.5 )
+                transition: all 300ms ease-in-out
+                &:hover
+                    color: $graybluelight
+                    background-color: $strongorange
+        #nameOut
+            color: $strongorange
+            font-weight: 700

@@ -19,9 +19,36 @@
 
 <!--                                                      body-section -->
     <body>
-        <header id="pageHeader">
-            <h1 id="mainTitle">Lösung ESA WEBD06A</h1>
-        </header>
+        <div id="pageWrapper">
+            <header id="pageHeader">
+                <h1>Lösung ESA WEBD06A</h1>
+                <p>Demonstration der Funktionsweise von jQuery</p>
+            </header>
+            <main>
+                <section class="mainSection" id="partA">
+                    <header class="sectionHeader">
+                        <h2>Teilaufgabe A</h2>
+                        <p>Ein- und Ausgabe von Formularwerte</p>
+                    </header>
+                    <div class="sectionContent">
+                        <form id="greetingForm">
+                            <fieldset>
+                                <legend>Greeting</legend>
+                                <div>
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" placeholder="Karl Ranseier">
+                                    <input type="text" name="instandReprint" id="instantReprint" disabled>
+                                </div>
+                                <button id="submit" type="button">Senden</button>
+                            </fieldset>
+                        </form>
+                        <p>Hallo <span id="nameOut"></span></p>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+
 
 <!--                                                           Scripts -->
         <script src="script/jQuery.js"></script>
