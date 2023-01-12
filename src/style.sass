@@ -25,16 +25,15 @@ header
 .mainSection
     margin: 4rem 0
     .sectionContent
-        h3
+        h3, legend
             color: $strongorange
-        fieldset
-            border-color: $strongorange
+            font-weight: 700
+            text-align: center
+        fieldset, > div
+            padding: 1rem
+            border: solid thin $strongorange
             border-radius: $borderRadius
             box-shadow: .025rem .025rem .5rem $graybluelight
-            legend
-                color: $strongorange
-                font-size: 1.75rem
-                font-weight: 700
             div
                 display: flex
                 flex-direction: column
@@ -90,3 +89,5 @@ header
                                 transform: translateX(1em)
                     .active
                         color: $strongorange
+#pageFooter
+    text-align: center
