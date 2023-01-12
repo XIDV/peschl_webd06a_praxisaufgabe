@@ -57,4 +57,26 @@ Außerdem erhält das erste dieser Listenpunkte (`key === 0`) die Klasse `active
 ### Die Funktion `showContent(e)`
 
 Mit dieser Funktion wird einerseits das animierte Ein- und Ausblenden des `#descriptionOut`-Elments und andererseits die Anzeige des spezifischen Inhalts, entsprechend des vom User selekterten Listenpunkts realisiert.  
-Bezüglich der Animation werden die Methoden `.fadeOut()` und `.slideDown()` geschachtelt.
+Bezüglich der Animation werden die Methoden `.fadeOut()` und `.slideDown()` geschachtelt. Wenn die Animation von `.fadeOut()` abgeschlossen ist wird eine anonyme Callback-Funktion ausgeführt. Sofern `showContent(e)` mit einem Event-Objekt als Parameter aufgerufen wurde, wird in das Element `#description` out die spezifischen Inhalts-Daten mit `.text()` geladen. Die Selektion der Daten erfolgt mit der Methode `getContent($(e.target).data().content)` des `contentData`-Objekts. Als Parameter wird der Wert des `data-content`-Attrbutes des Listenpunktes verwendet an dem das Event auftritt.  
+Erfolgt der Aufruf von `showContent(e)` ohne Event-Objekt erfolgt der Aufruf von `getContent` ebenfalls ohne Parameter was standardmäßig dazu führt, dass die Inhalte von `'css'` selektiert, zurückgegeben und angezeigt werden.
+
+Am Ende dieser Funktion wird, sofern sie mit einem Event-Objekt als Parameter aufgerufen wurde, der Aufruf der Funktion `toggleActiveLink(target)`. Als Parameter wird das HTML-Element übergeben an dem das Event auftrat.
+
+### Die Funktion `toggleActiveLink(target)`
+
+Allen Kind-Elementen von `#menuList` wird die Klasse `active` entzogen. (`.removeClass(...)`)  
+Das übergebene Element `target` erhält die Klasse `active`. (`addClass(...)`)
+
+## Styling mit SASS
+
+Kernelement für das Styling bildet die Datei `style.sass`. Diese bindet folgende Dateien ein:
+
+| Datei | Erläuterung |
+| --- | --- |
+| `preset.css` | Grundkonfiguration |
+| `colors.sass` | Definiert SASS-Variablen für Farben. |
+| `var.sass` | Definiert SASS-Variablen für diverse sich wiederholende Einstellungen. |
+
+---
+
+&copy; Sebastian Peschl 2023
