@@ -26,14 +26,15 @@ $(() => {
     $.getJSON('../script/content.json')
     .done((data) => {
         contentData.setContent(data);
+        createDisplayList(contentData.getContentNames())
         showContent();
+        $('#menuList').children().on('click', showContent);
     })
     .fail((jqXHR, errorMessage, error) => {
         console.error(errorMessage);
     });
 
     $('#descriptionOut').hide();
-    $('#menuList').children().on('click', showContent);
 });
 
 
@@ -49,7 +50,21 @@ const contentData = {
     },
     getContent: function(selection = 'css') {
         return this.content[selection];
+    },
+    getContentNames() {
+        let names = [];
+        for(let name in this.content) {
+            names.push(name);
+        }
+        return names;
     }
+}
+
+function createDisplayList(nameList) {
+    $.each(nameList, (key, value) => {
+        $('#menuList').append($(document.createElement('li')).html(`${value} <i class="fa-solid fa-chevron-right"></i>`).attr('data-content', value));
+        if(key === 0) { $('#menuList li').addClass('active') };
+    });
 }
 
 function showContent(e) {
