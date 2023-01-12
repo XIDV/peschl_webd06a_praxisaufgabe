@@ -55,7 +55,7 @@ class ContentData {
     setContent(content) {
         this.#content = content
     }
-    getContent(selection = this.getFirstElement()) {
+    getContent(selection = this.getFirstElementKey()) {
         return this.#content[selection];
     }
     getContentNames() {
@@ -65,7 +65,7 @@ class ContentData {
         }
         return names;
     }
-    getFirstElement() {
+    getFirstElementKey() {
         return Object.keys(this.#content)[0];
     }
 }

@@ -4,7 +4,7 @@ Lösung der ESA 9 unter Verwendung von jQuery, Ajax, sowie SASS
 
 ## Teilaufgabe A:
 
-Erfassung von Nutzer-Eingaben und Ausgabe im HTML-Dokumment.
+Erfassung von Nutzer-Eingaben und Ausgabe im HTML-Dokument.
 
 Für die Lösung dieser Aufgabe wurden zwei Event-Listener am `input`-Element mit der ID `#name` und einer am `button`-Element mit der ID `#submit` registriert.  
 Außerdem wurde die Funktion `setName(name)` implementiert, welche die Ausgabe einer User-Eingabe, bzw. die Ausgabe des Wertes des Attributes `placeholder` von `#name` realisiert.
@@ -44,10 +44,11 @@ Ist diese Anfrage erfolgreich wird die Methode `.done((data) => {...}` aufgerufe
 
 | Attribut / Methode | Erläuterung |
 | --- | --- |
-| `#content` | Speicher für die geladenen Inhalte. Wurde als `private` (`#`) deklariert um den Zugiff ausschließlich über die folgenden Methoden zu ermöglichen. |
+| `#content` | Speicher für die geladenen Inhalte. Wurde als `private` (`#`) deklariert, um den Zugriff ausschließlich über die folgenden Methoden zu ermöglichen. |
 | `setContent(content)` | Speichern der Übergebenen Objekte im Attribut `#content`. |
-| `getContent(selection = 'css'` | Rückgabe eines, durch den Parameter `selection` definierten Elements aus `#content`. Wird die Methode ohne Parameter aufgerufen wird als `selection` der String `'css'` verwendet. |
+| `getContent(selection = 'css'` | Rückgabe eines, durch den Parameter `selection` definierten Elements aus `#content`. Wird die Methode ohne Parameter aufgerufen wird als `selection` der `key` des ersten Objektes in `#content` verwendet. Dieser wird von der Methode `getFirstElementKey()` zurückgegeben. |
 | `getContentNames()` | Methode gibt ein Array mit den Namen der in `#content` gesicherten Objekte zurück. |
+| `getFirstElementKey()` | Rückgabe des ersten Objektes in `#content`. |
 
 ### Die Funktion `createDisplayList(nameList)`
 
@@ -57,10 +58,10 @@ Außerdem erhält das erste dieser Listenpunkte (`key === 0`) die Klasse `active
 ### Die Funktion `showContent(e)`
 
 Mit dieser Funktion wird einerseits das animierte Ein- und Ausblenden des `#descriptionOut`-Elments und andererseits die Anzeige des spezifischen Inhalts, entsprechend des vom User selekterten Listenpunkts realisiert.  
-Bezüglich der Animation werden die Methoden `.fadeOut()` und `.slideDown()` geschachtelt. Wenn die Animation von `.fadeOut()` abgeschlossen ist wird eine anonyme Callback-Funktion ausgeführt. Sofern `showContent(e)` mit einem Event-Objekt als Parameter aufgerufen wurde, wird in das Element `#description` out die spezifischen Inhalts-Daten mit `.text()` geladen. Die Selektion der Daten erfolgt mit der Methode `getContent($(e.target).data().content)` des `contentData`-Objekts. Als Parameter wird der Wert des `data-content`-Attrbutes des Listenpunktes verwendet an dem das Event auftritt.  
-Erfolgt der Aufruf von `showContent(e)` ohne Event-Objekt erfolgt der Aufruf von `getContent` ebenfalls ohne Parameter was standardmäßig dazu führt, dass die Inhalte von `'css'` selektiert, zurückgegeben und angezeigt werden.
+Bezüglich der Animation werden die Methoden `.fadeOut()` und `.slideDown()` geschachtelt. Wenn die Animation von `.fadeOut()` abgeschlossen ist wird eine anonyme Callback-Funktion ausgeführt. Sofern `showContent(e)` mit einem Event-Objekt als Parameter aufgerufen wurde, wird in das Element `#description` out die spezifischen Inhalts-Daten mit `.text()` geladen. Die Selektion der Daten erfolgt mit der Methode `getContent($(e.target).data().content)` des `contentData`-Objekts. Als Parameter wird der Wert des `data-content`-Attrbutes des Listenpunktes verwendet, an dem das Event auftritt.  
+Erfolgt der Aufruf von `showContent(e)` ohne Event-Objekt erfolgt der Aufruf von `getContent()` ebenfalls ohne Parameter was standardmäßig dazu führt, dass die Inhalte des ersten Elements in `#content` des `contentData`-Objektes selektiert, zurückgegeben und angezeigt werden.
 
-Am Ende dieser Funktion wird, sofern sie mit einem Event-Objekt als Parameter aufgerufen wurde, der Aufruf der Funktion `toggleActiveLink(target)`. Als Parameter wird das HTML-Element übergeben an dem das Event auftrat.
+Am Ende dieser Funktion wird, sofern sie mit einem Event-Objekt als Parameter aufgerufen wurde, der Aufruf der Funktion `toggleActiveLink(target)`. Als Parameter wird das HTML-Element übergeben, an dem das Event auftrat.
 
 ### Die Funktion `toggleActiveLink(target)`
 
