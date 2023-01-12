@@ -38,13 +38,18 @@ $(() => {
 });
 
 
+
+//  zu A :: Ausgabe der eingegebenen Daten
 function setNameOut(name) {
     name ? $('#nameOut').text(name) : $('#nameOut').text($('#name').attr('placeholder'));
 }
 
+
+
+//  zu B
+//  Speicher und Operationen mit den geladenen contentDaten
 const contentData = {
     $content: undefined,
-
     setContent: function(content) {
         this.content = content
     },
@@ -60,6 +65,7 @@ const contentData = {
     }
 }
 
+//  Generierung und Ausgabe der Auswahlliste
 function createDisplayList(nameList) {
     $.each(nameList, (key, value) => {
         $('#menuList').append($(document.createElement('li')).html(`${value} <i class="fa-solid fa-chevron-right"></i>`).attr('data-content', value));
@@ -67,6 +73,7 @@ function createDisplayList(nameList) {
     });
 }
 
+//  Ausgabe der Erläuterungen
 function showContent(e) {
     $('#descriptionOut').fadeOut(
         () => {
@@ -77,6 +84,7 @@ function showContent(e) {
     if(e) { toggleActiveLink(e.target) }
 }
 
+//  Modifizierung der Klassenzugehörigkeit der Elemente d. Auswahlliste
 function toggleActiveLink(target) {
     $('#menuList').children().removeClass('active');
     $(target).addClass('active');
