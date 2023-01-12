@@ -26,7 +26,7 @@ $(() => {
     $.getJSON('../script/content.json')
     .done((data) => {
         contentData.setContent(data);
-        createDisplayList(contentData.getContentNames())
+        createDisplayList(contentData.getContentNames());
         showContent();
         $('#menuList').children().on('click', showContent);
     })
@@ -47,23 +47,27 @@ function setNameOut(name) {
 
 
 //  zu B
-//  Speicher und Operationen mit den geladenen contentDaten
-const contentData = {
-    $content: undefined,
-    setContent: function(content) {
-        this.content = content
-    },
-    getContent: function(selection = 'css') {
-        return this.content[selection];
-    },
+class ContentData {
+    #content = undefined;
+    constructor() {
+        this.#content = null;
+    }
+    setContent(content) {
+        this.#content = content
+    }
+    getContent(selection = 'css') {
+        return this.#content[selection];
+    }
     getContentNames() {
         let names = [];
-        for(let name in this.content) {
+        for(let name in this.#content) {
             names.push(name);
         }
         return names;
     }
 }
+const contentData = new ContentData();
+
 
 //  Generierung und Ausgabe der Auswahlliste
 function createDisplayList(nameList) {
